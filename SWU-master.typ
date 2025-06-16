@@ -383,7 +383,6 @@ English caption 1//英文图表标题
 
 figure legend//英文图表说明
 ]
-#v(1em)
 ],
 supplement: [图#context counter(heading.where(level:1)).display("1")-],
 kind: figure
@@ -465,7 +464,6 @@ English caption 1
 中文图注
 
 figure legend]
-#v(1em)
 ],
 supplement: [图#context counter(heading.where(level:1)).display("1")-],
 kind: figure
@@ -545,7 +543,6 @@ English caption 1
 中文图注
 
 figure legend]
-#v(1em)
 ],
 supplement: [图#context counter(heading.where(level:1)).display("1")-],
 kind: figure
