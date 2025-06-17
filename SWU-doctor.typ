@@ -249,25 +249,27 @@ Typst版本：0.13.0
   }
 )
 #counter(page).update(1)
+//设置摘要部分的页眉，其它一级标题请复制并相应修改
 #set page(
-    header: context {
-    let headings = query(selector(heading).after(here()))
+  header: context {
     if calc.odd(here().page()) {
-            [
-              #align(center)[#text(size: 字号.五号)[#headings.first().body.text]]
-              #line(length: 100%, stroke: 2.25pt)
-              #v(3pt, weak: true)
-              #line(length: 100%, stroke: 0.75pt)
-            ]
-          } else {[
-              #align(center, cheader)
-              #v(-0.5em)
-              #line(length: 100%, stroke: 2.25pt)
-              #v(3pt, weak: true)
-              #line(length: 100%, stroke: 0.75pt)
-          ]
-          }
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[摘要]]
+        //#v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        // #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
     }
+  },
 )
 //////////以上这一部分不要修改////////////////////
 = 摘要
@@ -276,7 +278,28 @@ Typst版本：0.13.0
 
 *关键词*: 关键词1; 关键词2; 关键词3
 #smartpagebreak()
-
+//设置摘要部分的页眉，其它一级标题请复制并相应修改
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[ABSTRACT]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = ABSTRACT
 This is the English abstract content.
 
@@ -448,6 +471,27 @@ kind: table,
 #counter(page).update(1)
 #set page(numbering: "1")
 ///////////////////上述设置命令不要修改////////////////////
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[文献综述]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 文献综述
 双语标题图片示例见@fig:例图1，复制后使用。
 
@@ -511,6 +555,27 @@ kind: table,
 ==== 4级标题
 #lorem(50)
 #smartpagebreak()//分页符
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[引言]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 引言
 #counter(figure.where(kind: table)).update(0)//重置表格计数器
 #counter(figure.where(kind: figure)).update(0)//重置图片计数器
@@ -552,7 +617,27 @@ kind: figure
 #lorem(50)
 
 #smartpagebreak()
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[实验材料与方法]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 实验材料与方法
 #counter(figure.where(kind: table)).update(0)//重置表格计数器
 #counter(figure.where(kind: figure)).update(0)//重置图片计数器
@@ -560,13 +645,53 @@ kind: figure
 #lorem(50)
 
 #smartpagebreak()
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[研究结果与分析]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 研究结果与分析
 
 参考文献引用@wang2010guide @wang2010guide2 参考文献引用@kopka2004guide   
 
 #smartpagebreak()
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[结论与展望]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 结论与展望
 #counter(figure.where(kind: table)).update(0)//重置表格计数器
 #counter(figure.where(kind: figure)).update(0)//重置图片计数器
@@ -587,12 +712,52 @@ kind: figure
 // 设置段落格式
 #set par(leading:10pt,first-line-indent: 2em, linebreaks:auto, justify:true,spacing:1em) 
 ////上述设置命令不要修改//////////////////////////////////////////////////////////
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[参考文献]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 参考文献
 #bibliography("ref.bib",title:none,full:true,style: "config/gb-t-7714-2015-author-date-no-doi.csl")
 // 使用GB/T 7714-2015格式的参考文献样式
 #smartpagebreak()
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[附录]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 附录
 #counter(figure.where(kind: table)).update(0)//重置表格计数器
 #counter(figure.where(kind: figure)).update(0)//重置图片计数器
@@ -600,11 +765,51 @@ kind: figure
 #lorem(50)
 
 #smartpagebreak()
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[致谢]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 致谢
 #lorem(50)
 
 #smartpagebreak()
-
+#set page(
+  header: context {
+    if calc.odd(here().page()) {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[在学期间所发表的文章]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    } else {
+      [
+        #align(center)[#text(size: 字号.五号, font: 字体.宋体)[#cheader]]
+        #v(-0.5em)
+        #line(length: 100%, stroke: 2.25pt)
+        #v(3pt, weak: true)
+        #line(length: 100%, stroke: 0.75pt)
+      ]
+    }
+  },
+)
 = 在学期间所发表的文章
 1) paper1
