@@ -7,8 +7,10 @@ Typst版本：0.13.0
 */
 ////////////////////////////////////////////////////////////////////////////////////////
 #import "@preview/numbly:0.1.0": numbly
-#import "@preview/cuti:0.3.0": show-cn-fakebold
-#show: show-cn-fakebold
+#import "@preview/cuti:0.3.0": cn-fakebold
+//正文中的英文加粗可以用*包裹，即可正常显示
+//正文中的中文加粗要用命令#cn-fakebold[加粗文本]才能正常显示。
+//表格中首行的中文英文加粗格式在命令中已经预设，切勿再在表格中设置。其它内容的形式推荐使用show命令进行设置。
 
 //设置页面格式和默认字体格式
 //奇数页结束时插入空白偶数页，确保新页从奇数页开始
@@ -55,7 +57,9 @@ Typst版本：0.13.0
   代码: ("New Computer Modern Mono", "Times New Roman", "SimSun"),
 )
 // 设置默认字体和字号
-#set text(font: ("Times New Roman", "SimSun"), size: 12pt)
+#set text(size: 12pt, font: 字体.宋体)
+
+
 #set page(
   margin: (top: 3.0cm, left: 2.5cm, right: 2.5cm, bottom: 2.5cm),
   paper: "a4",
@@ -168,7 +172,7 @@ Typst版本：0.13.0
 
 #text(size: 字号.四号)[
   #align(center)[
-    #block(above: 2.5em, below: 2.5em)[#text(size: 字号.二号)[*独创性声明*]]]
+    #block(above: 2.5em, below: 2.5em)[#text(size: 字号.二号)[#cn-fakebold[独创性声明]]]]
   #set par(
     leading: 13pt,
     first-line-indent: 2em,
@@ -197,7 +201,7 @@ Typst版本：0.13.0
 #v(4em)
 #text(size: 字号.四号)[
   #align(center)[
-    #block(above: 2.5em, below: 2.5em)[#text(size: 字号.二号)[*学位论文版权使用授权书*]]]
+    #block(above: 2.5em, below: 2.5em)[#text(size: 字号.二号)[#cn-fakebold[学位论文版权使用授权书]]]]
   #set par(
     leading: 13pt,
     first-line-indent: 0em,
@@ -219,7 +223,7 @@ Typst版本：0.13.0
 #set par(leading: 13pt, first-line-indent: 0em, linebreaks: "optimized", justify: true, spacing: 0.5em) // 设置段落格式
 #text(size: 字号.四号)[
   #align(center)[
-    #block(above: 2.5em, below: 2.5em)[#text(size: 字号.二号)[*保护知识产权声明*]]]
+    #block(above: 2.5em, below: 2.5em)[#text(size: 字号.二号)[#cn-fakebold[保护知识产权声明]]]]
   #h(2em)本人完全了解西南大学关于对研究生在本校攻读学位期间撰写论文知识产权保护的规定。本人撰写的论文是在导师具体指导下，并得到相关研究经费支持下完成的。具体数据和研究成果归属于导师和作者本人，知识产权单位属西南大学。本人保证毕业后,以本论文数据和资料发表论文或使用论文工作成果时,署名第一单位仍然为西南大学。
   #v(2em)
   #text(font: 字体.仿宋)[学位论文作者签名：#h(8em)
@@ -311,7 +315,7 @@ Typst版本：0.13.0
 #set par(leading: 13pt, first-line-indent: 2em, linebreaks: auto, justify: true, spacing: 1em) // 设置段落格式
 #h(2em)此处为中文摘要内容。
 
-*关键词*: 关键词1; 关键词2; 关键词3
+#cn-fakebold[关键词]: 关键词1; 关键词2; 关键词3
 //////////////////////////////////////////////////////////////////////
 #smartpagebreak()
 //设置摘要部分的页眉，其它一级标题请复制并相应修改
@@ -341,6 +345,7 @@ Typst版本：0.13.0
 This is the English abstract content.
 
 *Keywords*: word; word; word
+
 #smartpagebreak()
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -424,8 +429,8 @@ This is the English abstract content.
 )
 #show table.cell: it => {
   if it.y == 0 {
-    set text(size: 字号.小五)
-    strong(it)
+    set text(size: 字号.小五, font: ("Times New Roman", "Source Han Serif"), weight: "bold")
+    it
   } else {
     set text(size: 字号.小五)
     it
@@ -436,7 +441,7 @@ This is the English abstract content.
 /////////////////////////双语标题图片///////////////////////////////
 #par()[#text(size: 1em)[#h(0.0em)]]//图表上方空行
 #figure(
-image("images/1-ATMT-mechanism.svg",width: 100%),
+image("images",width: 100%),
 placement: none,// 设置图片位置为none(当前插入位置不变），可选参数auto,top,bottom
 caption: [例图1标题//中文图表标题
 
@@ -526,7 +531,7 @@ kind: table,
   caption: [例图1标题
 
     Figure #context counter(heading.where(level: 1)).display("1")-#context counter(figure.where(kind: figure)).display("1").
-    English caption 1
+    English caption
 
     #text(font: 字体.宋体, size: 字号.小五)[
       中文图注
@@ -546,7 +551,7 @@ kind: table,
   placement: none,
   table(
     columns: 3,
-    [Name], [Age], [Strength],
+    [姓名], [Age], [Strength],
     table.cell(
       rowspan: 3,
       align: horizon,
