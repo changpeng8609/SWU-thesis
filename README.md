@@ -30,6 +30,10 @@
 2. 常规语法教程请参考https://typst-doc-cn.github.io/docs/tutorial/writing-in-typst/。
    注意：只需要掌握最基础的几点语法就可以使用typst进行写作了。
 
+3. 正文中的中文加粗要用命令#cn-fakebold[加粗文本]才能正常显示。
+
+4. 表格中首行的中文英文加粗格式在命令中已经预设，切勿再在表格中设置。其它内容的形式推荐使用show命令进行设置。
+
 # 致谢
 本模板在制作中学习和参考了[哈尔滨工业大学论文模板](https://github.com/hitszosa/universal-hit-thesis/)和[北京大学学位论文模板]（https://github.com/pku-typst/pkuthss-typst）的相关命令和内容，在此致谢。
 
